@@ -100,7 +100,7 @@ public class Ventana extends JFrame {
 			add(campo);
 			JButton boton1 = new JButton("Comprar");
 
-			ventana.Texto evento = new ventana.Texto();
+			Texto evento = new Texto();
 			boton1.addActionListener(evento);
 
 			add(boton1);
@@ -131,6 +131,7 @@ public class Ventana extends JFrame {
 		System.out.println("************Libros disponibles***************");
 		for (String cadena: nombreLibros){
 			System.out.println(cadena);
+			}
 		}
-	
+	}
 }
