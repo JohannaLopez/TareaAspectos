@@ -1,14 +1,16 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import java.util.ArrayList;
+import javax.swing.*;
 
 public class Ventana extends JFrame {
 	private JButton boton1; 
 	private JButton boton2;
 	private JButton boton3;
+	ArrayList<String> nombreLibros = new ArrayList<String>();
+	JTextField campo = new JTextField(20);
+
 	
 	Color[] colors;
 	
@@ -56,7 +58,9 @@ public class Ventana extends JFrame {
 			public void actionPerformed(ActionEvent e){  
 				accionBoton3(e,colors[2]);
 		}  
-		}));		
+		}));
+		LaminaTexto miLamina = new LaminaTexto();
+		this.add(miLamina);
 		this.add(boton1);
 		this.add(boton2);
 		this.add(boton3);
@@ -86,5 +90,47 @@ public class Ventana extends JFrame {
 	        }	    
 	    return name;
 	}
+
+	public class LaminaTexto extends JPanel{
+
+		public LaminaTexto(){
+			aniadirElementos();
+			mostrarLibros();
+
+			add(campo);
+			JButton boton1 = new JButton("Comprar");
+
+			ventana.Texto evento = new ventana.Texto();
+			boton1.addActionListener(evento);
+
+			add(boton1);
+		}
+
+	// Clase interna que obtiene el texto que escribe el usuario
+	private class Texto implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String ingreso = campo.getText().toLowerCase();
+			nombreLibros.removeIf(nombre -> ((nombre.toLowerCase()).equals(ingreso)));
+			mostrarLibros();
+		}
+
+	}
+	//Metodo que añade libros al arraylist
+	public void aniadirElementos() {
+
+		nombreLibros.add("El principito");
+		nombreLibros.add("Blancanieves");
+		nombreLibros.add("El ser y la nada");
+		nombreLibros.add("IT");
+		nombreLibros.add("El resplandor");
+	}
+	//Metodo que muestra los libros
+	public void mostrarLibros(){
+		System.out.println("************Libros disponibles***************");
+		for (String cadena: nombreLibros){
+			System.out.println(cadena);
+		}
 	
 }
