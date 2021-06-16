@@ -15,6 +15,7 @@ public aspect LogAspect {
 	    pointcut success1() : call(* removerLibro*());
 	    after() returning(String nombre) :success1(){
 	    	System.out.println("ASPECT LIBRO" + "\n");
+	    	
 	        System.out.println("Se ha comprado el libro: "+nombre.toString()); 
 
 	    }

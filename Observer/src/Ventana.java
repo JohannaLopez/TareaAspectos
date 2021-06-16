@@ -73,7 +73,10 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				removerLibro();	
+			String ingre = campo.getText().toLowerCase();
+			if (!nombreLibros.contains(ingre)) {
+				System.out.println("el libro "+ingre+" no se encuentra disponible");
+			} else {removerLibro();}
 			}
 		}));
 		
@@ -118,17 +121,16 @@ public class Ventana extends JFrame {
 		mostrarLibros();
 		return ingreso;
 	}
-
-
+	
 	
 	//Metodo que aniade libros al arraylist
 	public void aniadirElementos() {
 
-		nombreLibros.add("El principito");
-		nombreLibros.add("Blancanieves");
-		nombreLibros.add("El ser y la nada");
-		nombreLibros.add("IT");
-		nombreLibros.add("El resplandor");
+		nombreLibros.add("el principito");
+		nombreLibros.add("blancanieves");
+		nombreLibros.add("el ser y la nada");
+		nombreLibros.add("it");
+		nombreLibros.add("el resplandor");
 	}
 	//Metodo que muestra los libros
 	public void mostrarLibros(){
