@@ -11,6 +11,7 @@ public class Ventana extends JFrame {
 	private JButton boton4;
 	ArrayList<String> nombreLibros = new ArrayList<String>();
 	JTextField campo = new JTextField(20);
+	
 
 	
 	Color[] colors;
@@ -72,10 +73,7 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String ingreso = campo.getText().toLowerCase();
-				nombreLibros.removeIf(nombre -> ((nombre.toLowerCase()).equals(ingreso)));
-				mostrarLibros();
-				
+				removerLibro();	
 			}
 		}));
 		
@@ -114,6 +112,13 @@ public class Ventana extends JFrame {
 	}
 
 	
+	public String removerLibro() {
+		String ingreso = campo.getText().toLowerCase();
+		nombreLibros.removeIf(nombre -> ((nombre.toLowerCase()).equals(ingreso)));
+		mostrarLibros();
+		return ingreso;
+	}
+
 
 	
 	//Metodo que aniade libros al arraylist
